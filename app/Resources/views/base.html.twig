@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <head>
+            <meta charset="UTF-8" />
+            <title>{% block title %}Gestion des Apprentis et Recrutement{% endblock %}</title>
+            <!-- icon -->
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        </head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{{ asset('css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{{ asset('css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>    
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <!-- Navigation -->
+        <nav class="indigo darken-4" role="navigation">
+            <div class="nav-wrapper container">
+                <ul class="right hide-on-med-and-down">
+                    {% block nav1 %}
+                    <li><a href="http://localhost/Gar/web/app_dev.php/apprenti">Apprenti</a></li>  
+                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li> 
+                    {% endblock %}
+                    <li><i class="large material-icons red"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                </ul>   
+                <ul id="nav-mobile" class="side-nav">
+                    <li><i><a class="large material-icons red" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                    {% block nav2 %}
+                    <li><a href="http://localhost/Gar/web/app_dev.php/apprenti">Apprenti</a></li>  
+                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li> 
+                    {% endblock %}
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons withe-text">menu</i></a>
+            </div>
+
+        </nav>
+        <!-- Titre de la page et résumé -->
+        
+        <!-- Contenu du site -->
+        <div class="container">
+            <div class="section">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center green-text"><i class="material-icons">{% block icon_body %}{% endblock %}</i></h2>
+                        <h5 class="center">{% block title_body %}{% endblock %}</h5>
+                        <p class="light" align="center">
+                        {% block body %}{% endblock %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- insertion second parallax-container valign-wrapper -->
+        {% block body2 %}{% endblock %}
+        <footer class="page-footer  indigo">
+            {% block footer %}{% endblock %}            
+                <div class="container">
+                    Made by <a class="black-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                </div>            
+        </footer>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('js/materialize.js') }}"></script>
+        <script src="{{ asset('js/init.js') }}"></script>        
+        <script src="{{ asset('js/javascript.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+
     </body>
 </html>
+
