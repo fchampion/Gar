@@ -35,7 +35,19 @@ class Entreprise
      */
     private $ville;
 
-
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cp", type="string", length=255)
+     */
+    private $cp;
+    
     /**
      * Get id
      *
@@ -93,5 +105,45 @@ class Entreprise
     {
         return $this->ville;
     }
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    function getAdresse() {
+        return $this->adresse;
+    }
+    /**
+     * Get cp
+     *
+     * @return string
+     */
+    function getCp() {
+        return $this->cp;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Entreprise
+     */
+    function setAdresse($adresse) {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     *
+     * @return Entreprise
+     */
+    function setCp($cp) {
+        $this->cp = $cp;
+    }
+
+
 }
 

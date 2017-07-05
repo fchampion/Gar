@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rdvs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Heuredeb</th>
+                <th>Cv</th>
+                <th>Lm</th>
+                <th>Matgene</th>
+                <th>Mattechn</th>
+                <th>Assiduite</th>
+                <th>Ouvesprit</th>
+                <th>Relconfiance</th>
+                <th>Conform</th>
+                <th>Conapprent</th>
+                <th>Degresmotiv</th>
+                <th>Rechentrep</th>
+                <th>Predispotechn</th>
+                <th>Observscolaire</th>
+                <th>Observentretien</th>
+                <th>Conslusion</th>
+                <th>Avis</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr>
+                <td><a href="{{ path('rdv_show', { 'id': rdv.id }) }}">{{ rdv.id }}</a></td>
+                <td>{% if rdv.date %}{{ rdv.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if rdv.heureDeb %}{{ rdv.heureDeb|date('H:i:s') }}{% endif %}</td>
+                <td>{% if rdv.cv %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rdv.lm %}Yes{% else %}No{% endif %}</td>
+                <td>{{ rdv.matGene }}</td>
+                <td>{{ rdv.matTechn }}</td>
+                <td>{{ rdv.assiduite }}</td>
+                <td>{{ rdv.ouvEsprit }}</td>
+                <td>{{ rdv.relConfiance }}</td>
+                <td>{{ rdv.conForm }}</td>
+                <td>{{ rdv.conApprent }}</td>
+                <td>{{ rdv.degresMotiv }}</td>
+                <td>{{ rdv.rechEntrep }}</td>
+                <td>{{ rdv.predispoTechn }}</td>
+                <td>{{ rdv.observScolaire }}</td>
+                <td>{{ rdv.observEntretien }}</td>
+                <td>{{ rdv.conslusion }}</td>
+                <td>{{ rdv.avis }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rdv_show', { 'id': rdv.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rdv_edit', { 'id': rdv.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rdv_new') }}">Create a new rdv</a>
+        </li>
+    </ul>
+{% endblock %}
