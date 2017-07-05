@@ -1,13 +1,15 @@
 {% extends "::base.html.twig" %}
 {% block body %}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+    Vous êtes déjà connecté
+    </br>
+    </br>
     <a href="{{ path('fos_user_security_logout') }}">
         {{ 'Se déconnecter'|trans({}, 'FOSUserBundle') }}
     </a>
     {% else %}
     <a href="{{ path('fos_user_security_login') }}">{{ 'Authentification'|trans({}, 'FOSUserBundle') }}</a>
-    {% endif %}
+    
     </div>
 
     {% if app.request.hasPreviousSession %}
@@ -24,5 +26,6 @@
         {% block fos_user_content %}
         {% endblock fos_user_content %}
     </div>
+    {% endif %}
 {% endblock %}
                                

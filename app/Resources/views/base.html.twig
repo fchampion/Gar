@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+>>>>>>> 74951ba228eff89a52004a1d77a4828580e63693
 <html lang="fr">
     <head>
     <head>
@@ -6,6 +10,7 @@
         <!-- icon -->
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+<<<<<<< HEAD
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <!-- CSS -->
@@ -30,6 +35,36 @@
                             {% block nav2 %}
                     <li><a href="http://localhost/Gar/web/app_dev.php/apprenti">Apprenti</a></li>  
                     <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li> 
+=======
+    <body>
+        <!-- Navigation -->
+        <nav class="indigo darken-4" role="navigation">
+            <div class="nav-wrapper container">
+                <ul class="right hide-on-med-and-down">
+                    {% block nav1 %}
+                    <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
+                    <li><a href="#">Entreprise</a></li>
+                    <li><a href="#">Tuteur</a></li>
+                    <li><a href="#">Contrat</a></li>
+                    <li><a href="#">Conseil de classe</a></li>
+                    <li><a href="#">Rendez-vous</a></li>
+                    <li><a href="#">Visites</a></li>
+                    <li><a href="#">Problèmes</a></li>
+                    {% endblock %}
+                    <li><i class="large material-icons red"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                </ul>   
+                <ul id="nav-mobile" class="side-nav">
+                    <li><i><a class="large material-icons red" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                    {% block nav2 %}
+                    <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
+                    <li><a href="#">Entreprise</a></li>
+                    <li><a href="#">Tuteur</a></li>
+                    <li><a href="#">Contrat</a></li>
+                    <li><a href="#">Conseil de classe</a></li>
+                    <li><a href="#">Rendez-vous</a></li>
+                    <li><a href="#">Visites</a></li>
+                    <li><a href="#">Problèmes</a></li>
+>>>>>>> 74951ba228eff89a52004a1d77a4828580e63693
                     {% endblock %}
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons withe-text">menu</i></a>
@@ -50,6 +85,7 @@
                 </p>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </div>
 <!-- insertion second parallax-container valign-wrapper -->
@@ -71,5 +107,27 @@
     });
 </script>
 </body>
+=======
+        <!-- insertion second parallax-container valign-wrapper -->
+        {% block body2 %}{% endblock %}
+        <footer class="page-footer  indigo">
+            {% block footer %}{% endblock %}            
+                <div class="container">
+                    Made by <a class="black-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                </div>            
+        </footer>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('js/materialize.js') }}"></script>
+        <script src="{{ asset('js/init.js') }}"></script>        
+        <script src="{{ asset('js/javascript.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+
+    </body>
+>>>>>>> 74951ba228eff89a52004a1d77a4828580e63693
 </html>
 
