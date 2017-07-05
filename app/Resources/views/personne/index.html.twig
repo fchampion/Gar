@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Personnes list</h1>
+    <h1>Liste des personnes</h1>
+    <ul>
+        <li>
+            <a href="{{ path('personne_new') }}">Créer une nouvelle personne</a>
+        </li>
+    </ul>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Mail</th>
                 <th>Tel</th>
-                <th>Datenais</th>
+                <th>Date naissance</th>
                 <th>Excel</th>
                 <th>Statut</th>
                 <th>Actions</th>
@@ -20,7 +24,6 @@
         <tbody>
         {% for personne in personnes %}
             <tr>
-                <td><a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.id }}</a></td>
                 <td>{{ personne.nom }}</td>
                 <td>{{ personne.prenom }}</td>
                 <td>{{ personne.mail }}</td>
@@ -31,10 +34,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('personne_show', { 'id': personne.id }) }}">show</a>
+                            <a href="{{ path('personne_show', { 'id': personne.id }) }}">Détails</a>
                         </li>
                         <li>
-                            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">edit</a>
+                            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">Modifier</a>
                         </li>
                     </ul>
                 </td>
@@ -43,9 +46,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('personne_new') }}">Create a new personne</a>
-        </li>
-    </ul>
+    
 {% endblock %}
