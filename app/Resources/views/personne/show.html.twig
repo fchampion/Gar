@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personne</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personne.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ personne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ personne.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ personne.mail }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ personne.tel }}</td>
+            </tr>
+            <tr>
+                <th>Datenais</th>
+                <td>{% if personne.dateNais %}{{ personne.dateNais|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Excel</th>
+                <td>{{ personne.excel }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ personne.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personne_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

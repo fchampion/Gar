@@ -1,0 +1,24 @@
+personne_index:
+    path:     /
+    defaults: { _controller: "CoreBundle:Personne:index" }
+    methods:  GET
+
+personne_show:
+    path:     /{id}/show
+    defaults: { _controller: "CoreBundle:Personne:show" }
+    methods:  GET
+
+personne_new:
+    path:     /new
+    defaults: { _controller: "CoreBundle:Personne:new" }
+    methods:  [GET, POST]
+
+personne_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CoreBundle:Personne:edit" }
+    methods:  [GET, POST]
+
+personne_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CoreBundle:Personne:delete" }
+    methods:  DELETE
