@@ -4,21 +4,19 @@
     <h1>Liste des personnes</h1>
     <ul>
         <li>
-            <a href="{{ path('personne_new') }}">Créer une nouvelle personne</a>
-        </li>
+            <a href="{{ path('personne_new') }}" class="waves-effect waves-light btn green"><i class="material-icons left">add</i>Créer une nouvelle personne</a>
     </ul>
 
-    <table>
+    <table class='striped'>
         <thead>
             <tr>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Mail</th>
                 <th>Tel</th>
-                <th>Date naissance</th>
-                <th>Excel</th>
                 <th>Statut</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,19 +26,10 @@
                 <td>{{ personne.prenom }}</td>
                 <td>{{ personne.mail }}</td>
                 <td>{{ personne.tel }}</td>
-                <td>{% if personne.dateNais %}{{ personne.dateNais|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ personne.excel }}</td>
                 <td>{{ personne.statut }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('personne_show', { 'id': personne.id }) }}">Détails</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">Modifier</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><a href="{{ path('personne_edit', { 'id': personne.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
+                <td><a href="{{ path('personne_show', { 'id': personne.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
+                
             </tr>
         {% endfor %}
         </tbody>
