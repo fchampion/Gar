@@ -70,42 +70,6 @@ class Personne
      */
     private $statut;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="permis", type="boolean")
-     */
-    private $permis;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="permis_moto", type="boolean")
-     */
-    private $permis_moto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="voiture", type="boolean")
-     */
-    private $voiture;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="scooter", type="boolean")
-     */
-    private $scooter;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="moto", type="boolean")
-     */
-    private $moto;
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
@@ -278,97 +242,7 @@ class Personne
     {
         return $this->statut;
     }
-    /**
-     * Get permis_voiture
-     *
-     * @return string
-     */
-    function getPermis_voiture() {
-        return $this->permis_voiture;
-    }
-    /**
-     * Get voiture
-     *
-     * @return string
-     */
-    function getVoiture() {
-        return $this->voiture;
-    }
-    /**
-     * Set permis_voiture
-     *
-     * @param string $permis_voiture
-     *
-     * @return Personne
-     */
-    function setPermis_voiture($permis_voiture) {
-        $this->permis_voiture = $permis_voiture;
-    }
-    /**
-     * Set voiture
-     *
-     * @param string $voiture
-     *
-     * @return Personne
-     */
-    function setVoiture($voiture) {
-        $this->voiture = $voiture;
-    }
-    /**
-     * Get permis_moto
-     *
-     * @return string
-     */
-    function getPermis_moto() {
-        return $this->permis_moto;
-    }
-    /**
-     * Get scooter
-     *
-     * @return string
-     */
-    function getScooter() {
-        return $this->scooter;
-    }
-    /**
-     * Get moto
-     *
-     * @return string
-     */
-    function getMoto() {
-        return $this->moto;
-    }
-    /**
-     * Set permis_moto
-     *
-     * @param string $permis_moto
-     *
-     * @return Personne
-     */
-    function setPermis_moto($permis_moto) {
-        $this->permis_moto = $permis_moto;
-    }
-    /**
-     * Set scooter
-     *
-     * @param string $scooter
-     *
-     * @return Personne
-     */
-    function setScooter($scooter) {
-        $this->scooter = $scooter;
-    }
-    /**
-     * Set moto
-     *
-     * @param string $moto
-     *
-     * @return Personne
-     */
-    function setMoto($moto) {
-        $this->moto = $moto;
-    }
-
+   
 
 
 

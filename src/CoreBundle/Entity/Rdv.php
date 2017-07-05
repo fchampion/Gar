@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rdv")
  * @ORM\Entity(repositoryClass="CoreBundle\Repository\RdvRepository")
  */
-class Rdv
-{
+class Rdv {
+
     /**
      * @var int
      *
@@ -136,9 +136,9 @@ class Rdv
     /**
      * @var string
      *
-     * @ORM\Column(name="conslusion", type="string", length=255)
+     * @ORM\Column(name="$conclusion", type="string", length=255)
      */
-    private $conslusion;
+    private $conclusion;
 
     /**
      * @var string
@@ -147,14 +147,53 @@ class Rdv
      */
     private $avis;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="permis", type="boolean")
+     */
+    private $permis_voiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="permis_moto", type="boolean")
+     */
+    private $permis_moto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="voiture", type="boolean")
+     */
+    private $voiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="scooter", type="boolean")
+     */
+    private $scooter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="moto", type="boolean")
+     */
+    private $moto;
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId() {
         return $this->id;
     }
 
@@ -165,10 +204,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -177,8 +215,7 @@ class Rdv
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
@@ -189,10 +226,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setHeureDeb($heureDeb)
-    {
+    public function setHeureDeb($heureDeb) {
         $this->heureDeb = $heureDeb;
-    
+
         return $this;
     }
 
@@ -201,8 +237,7 @@ class Rdv
      *
      * @return \DateTime
      */
-    public function getHeureDeb()
-    {
+    public function getHeureDeb() {
         return $this->heureDeb;
     }
 
@@ -213,10 +248,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setCv($cv)
-    {
+    public function setCv($cv) {
         $this->cv = $cv;
-    
+
         return $this;
     }
 
@@ -225,8 +259,7 @@ class Rdv
      *
      * @return boolean
      */
-    public function getCv()
-    {
+    public function getCv() {
         return $this->cv;
     }
 
@@ -237,10 +270,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setLm($lm)
-    {
+    public function setLm($lm) {
         $this->lm = $lm;
-    
+
         return $this;
     }
 
@@ -249,8 +281,7 @@ class Rdv
      *
      * @return boolean
      */
-    public function getLm()
-    {
+    public function getLm() {
         return $this->lm;
     }
 
@@ -261,10 +292,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setMatGene($matGene)
-    {
+    public function setMatGene($matGene) {
         $this->matGene = $matGene;
-    
+
         return $this;
     }
 
@@ -273,8 +303,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getMatGene()
-    {
+    public function getMatGene() {
         return $this->matGene;
     }
 
@@ -285,10 +314,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setMatTechn($matTechn)
-    {
+    public function setMatTechn($matTechn) {
         $this->matTechn = $matTechn;
-    
+
         return $this;
     }
 
@@ -297,8 +325,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getMatTechn()
-    {
+    public function getMatTechn() {
         return $this->matTechn;
     }
 
@@ -309,10 +336,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setAssiduite($assiduite)
-    {
+    public function setAssiduite($assiduite) {
         $this->assiduite = $assiduite;
-    
+
         return $this;
     }
 
@@ -321,8 +347,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getAssiduite()
-    {
+    public function getAssiduite() {
         return $this->assiduite;
     }
 
@@ -333,10 +358,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setOuvEsprit($ouvEsprit)
-    {
+    public function setOuvEsprit($ouvEsprit) {
         $this->ouvEsprit = $ouvEsprit;
-    
+
         return $this;
     }
 
@@ -345,8 +369,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getOuvEsprit()
-    {
+    public function getOuvEsprit() {
         return $this->ouvEsprit;
     }
 
@@ -357,10 +380,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setRelConfiance($relConfiance)
-    {
+    public function setRelConfiance($relConfiance) {
         $this->relConfiance = $relConfiance;
-    
+
         return $this;
     }
 
@@ -369,8 +391,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getRelConfiance()
-    {
+    public function getRelConfiance() {
         return $this->relConfiance;
     }
 
@@ -381,10 +402,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setConForm($conForm)
-    {
+    public function setConForm($conForm) {
         $this->conForm = $conForm;
-    
+
         return $this;
     }
 
@@ -393,8 +413,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getConForm()
-    {
+    public function getConForm() {
         return $this->conForm;
     }
 
@@ -405,10 +424,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setConApprent($conApprent)
-    {
+    public function setConApprent($conApprent) {
         $this->conApprent = $conApprent;
-    
+
         return $this;
     }
 
@@ -417,8 +435,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getConApprent()
-    {
+    public function getConApprent() {
         return $this->conApprent;
     }
 
@@ -429,10 +446,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setDegresMotiv($degresMotiv)
-    {
+    public function setDegresMotiv($degresMotiv) {
         $this->degresMotiv = $degresMotiv;
-    
+
         return $this;
     }
 
@@ -441,8 +457,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getDegresMotiv()
-    {
+    public function getDegresMotiv() {
         return $this->degresMotiv;
     }
 
@@ -453,10 +468,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setRechEntrep($rechEntrep)
-    {
+    public function setRechEntrep($rechEntrep) {
         $this->rechEntrep = $rechEntrep;
-    
+
         return $this;
     }
 
@@ -465,8 +479,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getRechEntrep()
-    {
+    public function getRechEntrep() {
         return $this->rechEntrep;
     }
 
@@ -477,10 +490,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setPredispoTechn($predispoTechn)
-    {
+    public function setPredispoTechn($predispoTechn) {
         $this->predispoTechn = $predispoTechn;
-    
+
         return $this;
     }
 
@@ -489,8 +501,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getPredispoTechn()
-    {
+    public function getPredispoTechn() {
         return $this->predispoTechn;
     }
 
@@ -501,10 +512,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setObservScolaire($observScolaire)
-    {
+    public function setObservScolaire($observScolaire) {
         $this->observScolaire = $observScolaire;
-    
+
         return $this;
     }
 
@@ -513,8 +523,7 @@ class Rdv
      *
      * @return string
      */
-    public function getObservScolaire()
-    {
+    public function getObservScolaire() {
         return $this->observScolaire;
     }
 
@@ -525,10 +534,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setObservEntretien($observEntretien)
-    {
+    public function setObservEntretien($observEntretien) {
         $this->observEntretien = $observEntretien;
-    
+
         return $this;
     }
 
@@ -537,8 +545,7 @@ class Rdv
      *
      * @return string
      */
-    public function getObservEntretien()
-    {
+    public function getObservEntretien() {
         return $this->observEntretien;
     }
 
@@ -549,10 +556,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setConslusion($conslusion)
-    {
-        $this->conslusion = $conslusion;
-    
+    public function setConclusion($conclusion) {
+        $this->conclusion = $conclusion;
+
         return $this;
     }
 
@@ -561,9 +567,8 @@ class Rdv
      *
      * @return string
      */
-    public function getConslusion()
-    {
-        return $this->conslusion;
+    public function getConclusion() {
+        return $this->conclusion;
     }
 
     /**
@@ -573,10 +578,9 @@ class Rdv
      *
      * @return Rdv
      */
-    public function setAvis($avis)
-    {
+    public function setAvis($avis) {
         $this->avis = $avis;
-    
+
         return $this;
     }
 
@@ -585,9 +589,108 @@ class Rdv
      *
      * @return string
      */
-    public function getAvis()
-    {
+    public function getAvis() {
         return $this->avis;
     }
-}
 
+    /**
+     * Get permis_voiture
+     *
+     * @return string
+     */
+    function getPermis_voiture() {
+        return $this->permis_voiture;
+    }
+
+    /**
+     * Get voiture
+     *
+     * @return string
+     */
+    function getVoiture() {
+        return $this->voiture;
+    }
+
+    /**
+     * Set permis_voiture
+     *
+     * @param string $permis_voiture
+     *
+     * @return Personne
+     */
+    function setPermis_voiture($permis_voiture) {
+        $this->permis_voiture = $permis_voiture;
+    }
+
+    /**
+     * Set voiture
+     *
+     * @param string $voiture
+     *
+     * @return Personne
+     */
+    function setVoiture($voiture) {
+        $this->voiture = $voiture;
+    }
+
+    /**
+     * Get permis_moto
+     *
+     * @return string
+     */
+    function getPermis_moto() {
+        return $this->permis_moto;
+    }
+
+    /**
+     * Get scooter
+     *
+     * @return string
+     */
+    function getScooter() {
+        return $this->scooter;
+    }
+
+    /**
+     * Get moto
+     *
+     * @return string
+     */
+    function getMoto() {
+        return $this->moto;
+    }
+
+    /**
+     * Set permis_moto
+     *
+     * @param string $permis_moto
+     *
+     * @return Personne
+     */
+    function setPermis_moto($permis_moto) {
+        $this->permis_moto = $permis_moto;
+    }
+
+    /**
+     * Set scooter
+     *
+     * @param string $scooter
+     *
+     * @return Personne
+     */
+    function setScooter($scooter) {
+        $this->scooter = $scooter;
+    }
+
+    /**
+     * Set moto
+     *
+     * @param string $moto
+     *
+     * @return Personne
+     */
+    function setMoto($moto) {
+        $this->moto = $moto;
+    }
+
+}

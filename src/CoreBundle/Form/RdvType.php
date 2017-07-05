@@ -31,7 +31,13 @@ class RdvType extends AbstractType
                 ->add('observScolaire')
                 ->add('observEntretien')
                 ->add('conslusion')
-                ->add('avis', RadioType, array('avis'=> array('favorable'=>true, 'Réservé'=>false, 'Défavorable'=> false)));
+                ->add('avis', ChoiceType, array(
+                    'choices' => array(
+                        'Défavorable' => 'Défavorable',
+                        'Favorable' => 'Favorable',
+                        'Très favorable' => 'Très favorable'
+                    )
+                ));
 
                     
     }
