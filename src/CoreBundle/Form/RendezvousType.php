@@ -7,17 +7,33 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class RdvType extends AbstractType {
+class RendezvousType extends AbstractType {
 
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('date')
-                ->add('heureDeb')
-                ->add('cv')
-                ->add('lm')
+        $builder
+                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => 'nom'))
+                ->add('date')
+                ->add('cv', ChoiceType::class, array(
+                    'choices' => array(
+                        'NON' => false,
+                        'OUI' => true,
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('lettremotivation', ChoiceType::class, array(
+                    'choices' => array(
+                        'NON' => false,
+                        'OUI' => true,
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
                 ->add('matGene')
                 ->add('matTechn')
                 ->add('assiduite')
@@ -38,35 +54,45 @@ class RdvType extends AbstractType {
                         'Très favorable' => 'Très favorable'
                     )
                 ))
-                ->add('permis_voiture', ChoiceType::class, array(
+                ->add('permisVoiture', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
                         'OUI' => true,
-                    )
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
                 ))
-                ->add('permis_moto', ChoiceType::class, array(
+                ->add('permisMoto', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
                         'OUI' => true,
-                    )
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
                 ))
                 ->add('voiture', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
                         'OUI' => true,
-                    )
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
                 ))
                 ->add('moto', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
                         'OUI' => true,
-                    )
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
                 ))
                 ->add('scooter', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
                         'OUI' => true,
-                    )
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
                 ))
         ;
     }
@@ -76,7 +102,7 @@ class RdvType extends AbstractType {
      */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'CoreBundle\Entity\Rdv'
+            'data_class' => 'CoreBundle\Entity\Rendezvous'
         ));
     }
 
@@ -84,7 +110,7 @@ class RdvType extends AbstractType {
      * {@inheritdoc}
      */
     public function getBlockPrefix() {
-        return 'corebundle_rdv';
+        return 'corebundle_rendezvous';
     }
 
 }

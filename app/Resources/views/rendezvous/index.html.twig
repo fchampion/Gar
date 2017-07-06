@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rendezvouses list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Cv</th>
+                <th>Lettremotivation</th>
+                <th>Matgene</th>
+                <th>Mattechn</th>
+                <th>Assiduite</th>
+                <th>Ouvesprit</th>
+                <th>Relconfiance</th>
+                <th>Conform</th>
+                <th>Conapprent</th>
+                <th>Degresmotiv</th>
+                <th>Rechentrep</th>
+                <th>Predispotechn</th>
+                <th>Observscolaire</th>
+                <th>Observentretien</th>
+                <th>Conclusion</th>
+                <th>Avis</th>
+                <th>Permisvoiture</th>
+                <th>Permismoto</th>
+                <th>Voiture</th>
+                <th>Moto</th>
+                <th>Scooter</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendezvous in rendezvouses %}
+            <tr>
+                <td><a href="{{ path('rendezvous_show', { 'id': rendezvous.id }) }}">{{ rendezvous.id }}</a></td>
+                <td>{% if rendezvous.date %}{{ rendezvous.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if rendezvous.cv %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rendezvous.lettremotivation %}Yes{% else %}No{% endif %}</td>
+                <td>{{ rendezvous.matGene }}</td>
+                <td>{{ rendezvous.matTechn }}</td>
+                <td>{{ rendezvous.assiduite }}</td>
+                <td>{{ rendezvous.ouvEsprit }}</td>
+                <td>{{ rendezvous.relConfiance }}</td>
+                <td>{{ rendezvous.conForm }}</td>
+                <td>{{ rendezvous.conApprent }}</td>
+                <td>{{ rendezvous.degresMotiv }}</td>
+                <td>{{ rendezvous.rechEntrep }}</td>
+                <td>{{ rendezvous.predispoTechn }}</td>
+                <td>{{ rendezvous.observScolaire }}</td>
+                <td>{{ rendezvous.observEntretien }}</td>
+                <td>{{ rendezvous.conclusion }}</td>
+                <td>{{ rendezvous.avis }}</td>
+                <td>{% if rendezvous.permisVoiture %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rendezvous.permisMoto %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rendezvous.voiture %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rendezvous.moto %}Yes{% else %}No{% endif %}</td>
+                <td>{% if rendezvous.scooter %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('rendezvous_show', { 'id': rendezvous.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('rendezvous_edit', { 'id': rendezvous.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rendezvous_new') }}">Create a new rendezvous</a>
+        </li>
+    </ul>
+{% endblock %}
