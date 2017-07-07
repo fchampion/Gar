@@ -76,6 +76,12 @@ class Personne {
      */
     private $unRendezVous;
 
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Promo", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unePromo;
+
     public function getId() {
         return $this->id;
     }

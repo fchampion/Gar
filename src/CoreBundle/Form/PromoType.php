@@ -5,6 +5,10 @@ namespace CoreBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use CoreBundle\Entity\Personne;
+
 
 class PromoType extends AbstractType
 {
@@ -13,7 +17,10 @@ class PromoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('promo');
+        $builder
+                ->add('promo')
+                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', "multiple"=>true,'choice_label' => 'nom'));
+
     }
     
     /**
