@@ -82,6 +82,13 @@ class Personne {
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="uneEntreprise")
      */
     private $desContrats;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Promo", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unePromo;
+
 
     public function getId() {
         return $this->id;
@@ -265,5 +272,39 @@ class Personne {
 
     public function __construct() {
         $this->features = new ArrayCollection();
+    }
+
+    /**
+     * Add desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     *
+     * @return Personne
+     */
+    public function addDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats[] = $desContrat;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     */
+    public function removeDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats->removeElement($desContrat);
+    }
+
+    /**
+     * Get desContrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesContrats()
+    {
+        return $this->desContrats;
     }
 }

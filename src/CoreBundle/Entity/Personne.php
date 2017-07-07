@@ -82,6 +82,13 @@ class Personne {
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="uneEntreprise")
      */
     private $desContrats;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Promo", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unePromo;
+
 
     public function getId() {
         return $this->id;
@@ -299,5 +306,29 @@ class Personne {
     public function getDesContrats()
     {
         return $this->desContrats;
+    }
+
+    /**
+     * Set unePromo
+     *
+     * @param \CoreBundle\Entity\Promo $unePromo
+     *
+     * @return Personne
+     */
+    public function setUnePromo(\CoreBundle\Entity\Promo $unePromo = null)
+    {
+        $this->unePromo = $unePromo;
+    
+        return $this;
+    }
+
+    /**
+     * Get unePromo
+     *
+     * @return \CoreBundle\Entity\Promo
+     */
+    public function getUnePromo()
+    {
+        return $this->unePromo;
     }
 }
