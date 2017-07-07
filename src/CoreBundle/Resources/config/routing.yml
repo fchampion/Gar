@@ -17,3 +17,7 @@ core_rdv:
 core_rendezvous:
     resource: "@CoreBundle/Resources/config/routing/rendezvous.yml"
     prefix: /rendezvous
+    
+core_contrat:
+    resource: "@CoreBundle/Resources/config/routing/contrat.yml"
+    prefix: /contrat

@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,6 +76,12 @@ class Personne {
      * @ORM\JoinColumn(nullable=true)
      */
     private $unRendezVous;
+
+    /**
+     * Many Users have One Address.
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="uneEntreprise")
+     */
+    private $desContrats;
 
     public function getId() {
         return $this->id;
@@ -256,12 +263,41 @@ class Personne {
         return $this->unRendezVous;
     }
 
-    /**
-     * 
-     */
-    public function getNomPrenom() {
-        $nomPrenom = this.getNom() + ' ' + this.getPenom();
-        return $nomPrenom;
+    public function __construct() {
+        $this->features = new ArrayCollection();
     }
 
+    /**
+     * Add desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     *
+     * @return Personne
+     */
+    public function addDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats[] = $desContrat;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     */
+    public function removeDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats->removeElement($desContrat);
+    }
+
+    /**
+     * Get desContrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesContrats()
+    {
+        return $this->desContrats;
+    }
 }
