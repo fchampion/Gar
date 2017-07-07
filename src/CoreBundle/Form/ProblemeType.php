@@ -5,6 +5,10 @@ namespace CoreBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use CoreBundle\Entity\Personne;
+
 
 class ProblemeType extends AbstractType
 {
@@ -13,7 +17,8 @@ class ProblemeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('motif')->add('echange')->add('unContrat');
+        $builder->add('date')->add('motif')->add('echange')
+                ->add('unContrat', EntityType::class, array('class' => 'CoreBundle:Contrat', 'choice_label' => 'unePersonne.nom'));
     }
     
     /**

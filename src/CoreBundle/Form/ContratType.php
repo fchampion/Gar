@@ -29,6 +29,7 @@ class ContratType extends AbstractType
                 ))
                 ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => 'nom'))
                 ->add('uneEntreprise', EntityType::class, array('class' => 'CoreBundle:Entreprise', 'choice_label' => 'nom'))
+                ->add('unTuteur', EntityType::class, array('class' => 'CoreBundle:Tuteur', 'choice_label' => 'nom'))
                 ;
     }
     

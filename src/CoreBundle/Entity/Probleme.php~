@@ -123,4 +123,28 @@ class Probleme {
         return $this->echange;
     }
 
+
+    /**
+     * Set unContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $unContrat
+     *
+     * @return Probleme
+     */
+    public function setUnContrat(\CoreBundle\Entity\Contrat $unContrat = null)
+    {
+        $this->unContrat = $unContrat;
+    
+        return $this;
+    }
+
+    /**
+     * Get unContrat
+     *
+     * @return \CoreBundle\Entity\Contrat
+     */
+    public function getUnContrat()
+    {
+        return $this->unContrat;
+    }
 }

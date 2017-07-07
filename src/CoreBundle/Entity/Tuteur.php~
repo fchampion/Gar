@@ -209,4 +209,45 @@ class Tuteur {
         return $this->present;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->desContrats = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     *
+     * @return Tuteur
+     */
+    public function addDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats[] = $desContrat;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     */
+    public function removeDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats->removeElement($desContrat);
+    }
+
+    /**
+     * Get desContrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesContrats()
+    {
+        return $this->desContrats;
+    }
 }
