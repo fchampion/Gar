@@ -5,9 +5,9 @@ namespace CoreBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use CoreBundle\Entity\Personne;
 
 class RendezvousType extends AbstractType {
 
@@ -15,9 +15,18 @@ class RendezvousType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        
         $builder
-                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => 'nom'))
+                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => CoreBundle\Entity\Personne\getNomPrenom()))
                 ->add('date')
+                ->add('duree', ChoiceType::class, array(
+                    'choices' => array(
+                        '15 minutes' => 15,
+                        '30 minutes' => 30,
+                        '45 minutes' => 45,
+                        '1 heure' => 60
+                    )
+                ))
                 ->add('cv', ChoiceType::class, array(
                     'choices' => array(
                         'NON' => false,
@@ -34,16 +43,106 @@ class RendezvousType extends AbstractType {
                     'expanded' => true,
                     'multiple' => false
                 ))
-                ->add('matGene')
-                ->add('matTechn')
-                ->add('assiduite')
-                ->add('ouvEsprit')
-                ->add('relConfiance')
-                ->add('conForm')
-                ->add('conApprent')
-                ->add('degresMotiv')
-                ->add('rechEntrep')
-                ->add('predispoTechn')
+                ->add('matGene', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )    ' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('matTechn', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + +)' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('assiduite', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('ouvEsprit', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('relConfiance', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('conForm', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('conApprent', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('degresMotiv', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('rechEntrep', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
+                ->add('predispoTechn', ChoiceType::class, array(
+                    'choices' => array(
+                        '( - - )' => 1,
+                        '( - )' => 2,
+                        '( + )' => 3,
+                        '( + + )' => 4
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
                 ->add('observScolaire')
                 ->add('observEntretien')
                 ->add('conclusion')

@@ -174,6 +174,13 @@ class Rendezvous {
      * @ORM\Column(name="scooter", type="boolean")
      */
     private $scooter;
+    
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
 
     /**
      * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Personne", cascade="persist")
@@ -697,5 +704,29 @@ class Rendezvous {
     public function getUnePersonne()
     {
         return $this->unePersonne;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param integer $duree
+     *
+     * @return Rendezvous
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return integer
+     */
+    public function getDuree()
+    {
+        return $this->duree;
     }
 }

@@ -234,7 +234,6 @@ class Personne {
         return $this->statut;
     }
 
-
     /**
      * Set unRendezVous
      *
@@ -242,10 +241,9 @@ class Personne {
      *
      * @return Personne
      */
-    public function setUnRendezVous(\CoreBundle\Entity\Rendezvous $unRendezVous = null)
-    {
+    public function setUnRendezVous(\CoreBundle\Entity\Rendezvous $unRendezVous = null) {
         $this->unRendezVous = $unRendezVous;
-    
+
         return $this;
     }
 
@@ -254,8 +252,16 @@ class Personne {
      *
      * @return \CoreBundle\Entity\Rendezvous
      */
-    public function getUnRendezVous()
-    {
+    public function getUnRendezVous() {
         return $this->unRendezVous;
     }
+
+    /**
+     * 
+     */
+    public function getNomPrenom() {
+        $nomPrenom = this.getNom() + ' ' + this.getPenom();
+        return $nomPrenom;
+    }
+
 }
