@@ -17,7 +17,7 @@ class RendezvousType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         
         $builder
-                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => CoreBundle\Entity\Personne\getNomPrenom()))
+                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', 'choice_label' => 'nom'))
                 ->add('date')
                 ->add('duree', ChoiceType::class, array(
                     'choices' => array(
