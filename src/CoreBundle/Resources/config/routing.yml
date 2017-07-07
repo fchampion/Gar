@@ -10,10 +10,10 @@ core_entreprise:
     resource: "@CoreBundle/Resources/config/routing/entreprise.yml"
     prefix: /entreprise
     
-core_rdv:
-    resource: "@CoreBundle/Resources/config/routing/rdv.yml"
-    prefix: /rdv
-    
+core_promo:
+    resource: "@CoreBundle/Resources/config/routing/promo.yml"
+    prefix: /promo
+
 core_rendezvous:
     resource: "@CoreBundle/Resources/config/routing/rendezvous.yml"
     prefix: /rendezvous
