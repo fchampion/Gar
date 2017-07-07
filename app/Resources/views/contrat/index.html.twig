@@ -1,43 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Contrats list</h1>
-
-    <table>
+    <h1>Liste des contrats</h1>
+    <ul>
+        <li>
+            <a href="{{ path('contrat_new') }}" class="waves-effect waves-light btn green"><i class="material-icons left">add</i>Créer un nouveau contrat</a>
+    </ul>
+    <table class='striped'>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Datedebut</th>
-                <th>Datefin</th>
+                <th>Personne</th>
+                <th>Entreprise</th>
+                <th>Date de fin</th>
                 <th>Actif</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for contrat in contrats %}
             <tr>
-                <td><a href="{{ path('contrat_show', { 'id': contrat.id }) }}">{{ contrat.id }}</a></td>
-                <td>{% if contrat.dateDebut %}{{ contrat.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ contrat.unePersonne.nom }}</td>
+                <td>{{ contrat.uneEntreprise.nom }}</td>
                 <td>{% if contrat.dateFin %}{{ contrat.dateFin|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if contrat.actif %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('contrat_show', { 'id': contrat.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('contrat_edit', { 'id': contrat.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><a href="{{ path('contrat_edit', { 'id': contrat.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
+                <td><a href="{{ path('contrat_show', { 'id': contrat.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('contrat_new') }}">Create a new contrat</a>
-        </li>
-    </ul>
 {% endblock %}
