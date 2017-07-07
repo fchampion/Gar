@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Rendezvous creation</h1>
-
+    <h1>Création d'un rendez-vous</h1>
+<ul>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <button class="btn waves-effect waves-light green" type="submit" name="Créer">Créer
+            <i class="material-icons right">add</i>
+        </button>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('rendezvous_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    </br>
+    <li>
+        <a href="{{ path('rendezvous_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
+    </li>
+</ul>
 {% endblock %}

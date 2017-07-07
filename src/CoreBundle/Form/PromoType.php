@@ -18,8 +18,7 @@ class PromoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('promo')
-                ->add('unePersonne', EntityType::class, array('class' => 'CoreBundle:Personne', "multiple"=>true,'choice_label' => 'nom'));
+                ->add('promo');                
 
     }
     
