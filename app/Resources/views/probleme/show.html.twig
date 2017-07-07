@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Probleme</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ probleme.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if probleme.date %}{{ probleme.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Motif</th>
+                <td>{{ probleme.motif }}</td>
+            </tr>
+            <tr>
+                <th>Echange</th>
+                <td>{{ probleme.echange }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('probleme_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('probleme_edit', { 'id': probleme.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

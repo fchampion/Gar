@@ -1,0 +1,24 @@
+probleme_index:
+    path:     /
+    defaults: { _controller: "CoreBundle:Probleme:index" }
+    methods:  GET
+
+probleme_show:
+    path:     /{id}/show
+    defaults: { _controller: "CoreBundle:Probleme:show" }
+    methods:  GET
+
+probleme_new:
+    path:     /new
+    defaults: { _controller: "CoreBundle:Probleme:new" }
+    methods:  [GET, POST]
+
+probleme_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CoreBundle:Probleme:edit" }
+    methods:  [GET, POST]
+
+probleme_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CoreBundle:Probleme:delete" }
+    methods:  DELETE

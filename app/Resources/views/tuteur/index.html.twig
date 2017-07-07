@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tuteurs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Fonction</th>
+                <th>Present</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tuteur in tuteurs %}
+            <tr>
+                <td><a href="{{ path('tuteur_show', { 'id': tuteur.id }) }}">{{ tuteur.id }}</a></td>
+                <td>{{ tuteur.nom }}</td>
+                <td>{{ tuteur.prenom }}</td>
+                <td>{{ tuteur.email }}</td>
+                <td>{{ tuteur.telephone }}</td>
+                <td>{{ tuteur.fonction }}</td>
+                <td>{% if tuteur.present %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tuteur_show', { 'id': tuteur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tuteur_edit', { 'id': tuteur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tuteur_new') }}">Create a new tuteur</a>
+        </li>
+    </ul>
+{% endblock %}

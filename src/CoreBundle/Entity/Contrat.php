@@ -42,7 +42,7 @@ class Contrat {
      */
     private $actif;
 
-   /**
+    /**
      * @ORM\ManyToOne(targetEntity="Personne", inversedBy="desContrats")
      * @ORM\JoinColumn(name="personne_id", referencedColumnName="id")
      */
@@ -53,6 +53,18 @@ class Contrat {
      * @ORM\JoinColumn(name="entreprise_id", referencedColumnName="id")
      */
     private $uneEntreprise;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Tuteur", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unTuteur;
+    
+        /**
+     * Many Users have One Address.
+     * @ORM\OneToMany(targetEntity="Probleme", mappedBy="unContrat")
+     */
+    private $desProblemes;
 
     /**
      * Get id
@@ -129,7 +141,6 @@ class Contrat {
         return $this->actif;
     }
 
-
     /**
      * Set unePersonne
      *
@@ -137,10 +148,9 @@ class Contrat {
      *
      * @return Contrat
      */
-    public function setUnePersonne(\CoreBundle\Entity\Personne $unePersonne = null)
-    {
+    public function setUnePersonne(\CoreBundle\Entity\Personne $unePersonne = null) {
         $this->unePersonne = $unePersonne;
-    
+
         return $this;
     }
 
@@ -149,8 +159,7 @@ class Contrat {
      *
      * @return \CoreBundle\Entity\Personne
      */
-    public function getUnePersonne()
-    {
+    public function getUnePersonne() {
         return $this->unePersonne;
     }
 
@@ -161,10 +170,9 @@ class Contrat {
      *
      * @return Contrat
      */
-    public function setUneEntreprise(\CoreBundle\Entity\Entreprise $uneEntreprise = null)
-    {
+    public function setUneEntreprise(\CoreBundle\Entity\Entreprise $uneEntreprise = null) {
         $this->uneEntreprise = $uneEntreprise;
-    
+
         return $this;
     }
 
@@ -173,8 +181,73 @@ class Contrat {
      *
      * @return \CoreBundle\Entity\Entreprise
      */
-    public function getUneEntreprise()
-    {
+    public function getUneEntreprise() {
         return $this->uneEntreprise;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->desProblemes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set unTuteur
+     *
+     * @param \CoreBundle\Entity\Tuteur $unTuteur
+     *
+     * @return Contrat
+     */
+    public function setUnTuteur(\CoreBundle\Entity\Tuteur $unTuteur = null)
+    {
+        $this->unTuteur = $unTuteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get unTuteur
+     *
+     * @return \CoreBundle\Entity\Tuteur
+     */
+    public function getUnTuteur()
+    {
+        return $this->unTuteur;
+    }
+
+    /**
+     * Add desProbleme
+     *
+     * @param \CoreBundle\Entity\Probleme $desProbleme
+     *
+     * @return Contrat
+     */
+    public function addDesProbleme(\CoreBundle\Entity\Probleme $desProbleme)
+    {
+        $this->desProblemes[] = $desProbleme;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desProbleme
+     *
+     * @param \CoreBundle\Entity\Probleme $desProbleme
+     */
+    public function removeDesProbleme(\CoreBundle\Entity\Probleme $desProbleme)
+    {
+        $this->desProblemes->removeElement($desProbleme);
+    }
+
+    /**
+     * Get desProblemes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesProblemes()
+    {
+        return $this->desProblemes;
     }
 }

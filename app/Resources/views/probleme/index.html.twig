@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Problemes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Motif</th>
+                <th>Echange</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for probleme in problemes %}
+            <tr>
+                <td><a href="{{ path('probleme_show', { 'id': probleme.id }) }}">{{ probleme.id }}</a></td>
+                <td>{% if probleme.date %}{{ probleme.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ probleme.motif }}</td>
+                <td>{{ probleme.echange }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('probleme_show', { 'id': probleme.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('probleme_edit', { 'id': probleme.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('probleme_new') }}">Create a new probleme</a>
+        </li>
+    </ul>
+{% endblock %}

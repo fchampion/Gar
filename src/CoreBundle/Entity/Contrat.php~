@@ -42,7 +42,7 @@ class Contrat {
      */
     private $actif;
 
-   /**
+    /**
      * @ORM\ManyToOne(targetEntity="Personne", inversedBy="desContrats")
      * @ORM\JoinColumn(name="personne_id", referencedColumnName="id")
      */
@@ -53,6 +53,18 @@ class Contrat {
      * @ORM\JoinColumn(name="entreprise_id", referencedColumnName="id")
      */
     private $uneEntreprise;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Tuteur", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unTuteur;
+    
+        /**
+     * Many Users have One Address.
+     * @ORM\OneToMany(targetEntity="Probleme", mappedBy="unContrat")
+     */
+    private $desProblemes;
 
     /**
      * Get id
@@ -127,6 +139,50 @@ class Contrat {
      */
     public function getActif() {
         return $this->actif;
+    }
+
+    /**
+     * Set unePersonne
+     *
+     * @param \CoreBundle\Entity\Personne $unePersonne
+     *
+     * @return Contrat
+     */
+    public function setUnePersonne(\CoreBundle\Entity\Personne $unePersonne = null) {
+        $this->unePersonne = $unePersonne;
+
+        return $this;
+    }
+
+    /**
+     * Get unePersonne
+     *
+     * @return \CoreBundle\Entity\Personne
+     */
+    public function getUnePersonne() {
+        return $this->unePersonne;
+    }
+
+    /**
+     * Set uneEntreprise
+     *
+     * @param \CoreBundle\Entity\Entreprise $uneEntreprise
+     *
+     * @return Contrat
+     */
+    public function setUneEntreprise(\CoreBundle\Entity\Entreprise $uneEntreprise = null) {
+        $this->uneEntreprise = $uneEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * Get uneEntreprise
+     *
+     * @return \CoreBundle\Entity\Entreprise
+     */
+    public function getUneEntreprise() {
+        return $this->uneEntreprise;
     }
 
 }
