@@ -60,11 +60,17 @@ class Contrat {
      */
     private $unTuteur;
     
-        /**
+    /**
      * Many Users have One Address.
      * @ORM\OneToMany(targetEntity="Probleme", mappedBy="unContrat")
      */
     private $desProblemes;
+
+    /**
+     * Many Users have One Address.
+     * @ORM\OneToMany(targetEntity="Visite", mappedBy="unContrat")
+     */
+    private $desVisites;
 
     /**
      * Get id

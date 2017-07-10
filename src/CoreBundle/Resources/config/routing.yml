@@ -29,3 +29,7 @@ core_tuteur:
 core_probleme:
     resource: "@CoreBundle/Resources/config/routing/probleme.yml"
     prefix: /probleme
+
+core_visite:
+    resource: "@CoreBundle/Resources/config/routing/visite.yml"
+    prefix: /visite
