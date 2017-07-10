@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Probleme creation</h1>
-
+{% block body %}    
+<h1>Création d'un problème</h1>
+<ul>
     {{ form_start(form) }}
         {{ form_widget(form) }}
         </br>
-        <input type="submit" value="Create" />
+        <button class="btn waves-effect waves-light green" type="submit" name="Créer">Créer
+            <i class="material-icons right">add</i>
+        </button>
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('probleme_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    </br>
+    <li>
+        <a href="{{ path('probleme_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
+    </li>
+</ul>
 {% endblock %}
