@@ -101,6 +101,14 @@ class RendezvousController extends Controller {
         return $this->redirectToRoute('rendezvous_index');
     }
 
+    public function mailAction(Request $request, Rendezvous $rendezvous) {
+        
+        return $this->render('rendezvous/mail.html.twig', array(
+                    'id'=>$rendezvous->getId(),
+                    'rendezvous' => $rendezvous,
+            ));
+    }
+    
     /**
      * Creates a form to delete a rendezvous entity.
      *
