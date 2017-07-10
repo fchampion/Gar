@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Personne</h1>
+    <h1>Détails de la personne</h1>
 
-    <table>
+    <table class='striped'>
         <tbody>
+            <tr>
+                <td colspan="2"><img src="{{ asset("img/profil/") }}{{personne.id}}.{{personne.url}}" height="150" width="150" align="center"/></td>
+                    
+            </tr>
             <tr>
                 <th>Id</th>
                 <td>{{ personne.id }}</td>
@@ -39,18 +43,21 @@
             </tr>
         </tbody>
     </table>
-
     <ul>
         <li>
-            <a href="{{ path('personne_index') }}">Revenir à la liste</a>
+            <a href="{{ path('personne_edit', { 'id': personne.id }) }}" class="waves-effect waves-light btn orange"><i class="material-icons right">replay</i>Modifier</a>
         </li>
-        <li>
-            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">Modifier</a>
-        </li>
+        </br>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
+                <button class="btn waves-effect waves-light red darken-2" type="submit" name="Supprimer">Supprimer
+                    <i class="material-icons right">delete</i>
+                </button>
             {{ form_end(delete_form) }}
+        </li>
+        </br>
+        <li>
+            <a href="{{ path('personne_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
         </li>
     </ul>
 {% endblock %}

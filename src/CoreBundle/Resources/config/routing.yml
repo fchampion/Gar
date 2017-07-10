@@ -13,3 +13,7 @@ core_entreprise:
 core_rdv:
     resource: "@CoreBundle/Resources/config/routing/rdv.yml"
     prefix: /rdv
+    
+core_rendezvous:
+    resource: "@CoreBundle/Resources/config/routing/rendezvous.yml"
+    prefix: /rendezvous

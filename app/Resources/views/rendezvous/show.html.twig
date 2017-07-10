@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rendezvous</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rendezvous.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if rendezvous.date %}{{ rendezvous.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td>{% if rendezvous.cv %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lettremotivation</th>
+                <td>{% if rendezvous.lettremotivation %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Matgene</th>
+                <td>{{ rendezvous.matGene }}</td>
+            </tr>
+            <tr>
+                <th>Mattechn</th>
+                <td>{{ rendezvous.matTechn }}</td>
+            </tr>
+            <tr>
+                <th>Assiduite</th>
+                <td>{{ rendezvous.assiduite }}</td>
+            </tr>
+            <tr>
+                <th>Ouvesprit</th>
+                <td>{{ rendezvous.ouvEsprit }}</td>
+            </tr>
+            <tr>
+                <th>Relconfiance</th>
+                <td>{{ rendezvous.relConfiance }}</td>
+            </tr>
+            <tr>
+                <th>Conform</th>
+                <td>{{ rendezvous.conForm }}</td>
+            </tr>
+            <tr>
+                <th>Conapprent</th>
+                <td>{{ rendezvous.conApprent }}</td>
+            </tr>
+            <tr>
+                <th>Degresmotiv</th>
+                <td>{{ rendezvous.degresMotiv }}</td>
+            </tr>
+            <tr>
+                <th>Rechentrep</th>
+                <td>{{ rendezvous.rechEntrep }}</td>
+            </tr>
+            <tr>
+                <th>Predispotechn</th>
+                <td>{{ rendezvous.predispoTechn }}</td>
+            </tr>
+            <tr>
+                <th>Observscolaire</th>
+                <td>{{ rendezvous.observScolaire }}</td>
+            </tr>
+            <tr>
+                <th>Observentretien</th>
+                <td>{{ rendezvous.observEntretien }}</td>
+            </tr>
+            <tr>
+                <th>Conclusion</th>
+                <td>{{ rendezvous.conclusion }}</td>
+            </tr>
+            <tr>
+                <th>Avis</th>
+                <td>{{ rendezvous.avis }}</td>
+            </tr>
+            <tr>
+                <th>Permisvoiture</th>
+                <td>{% if rendezvous.permisVoiture %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Permismoto</th>
+                <td>{% if rendezvous.permisMoto %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Voiture</th>
+                <td>{% if rendezvous.voiture %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Moto</th>
+                <td>{% if rendezvous.moto %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Scooter</th>
+                <td>{% if rendezvous.scooter %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rendezvous_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('rendezvous_edit', { 'id': rendezvous.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

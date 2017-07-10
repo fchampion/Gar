@@ -5,6 +5,7 @@ namespace CoreBundle\Controller;
 use CoreBundle\Entity\Personne;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use CoreBundle\Form\PersonneType;
 
 /**
  * Personne controller.
@@ -38,7 +39,7 @@ class PersonneController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();                   
             $em->persist($personne);
             $em->flush();
 
@@ -121,4 +122,6 @@ class PersonneController extends Controller
             ->getForm()
         ;
     }
+    
+
 }

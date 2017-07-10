@@ -5,13 +5,13 @@ namespace CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Rdv
+ * Rendezvous
  *
- * @ORM\Table(name="rdv")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\RdvRepository")
+ * @ORM\Table(name="rendezvous")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\RendezvousRepository")
  */
-class Rdv
-{
+class Rendezvous {
+
     /**
      * @var int
      *
@@ -24,30 +24,23 @@ class Rdv
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="heure_deb", type="time")
-     */
-    private $heureDeb;
-
-    /**
      * @var bool
      *
-     * @ORM\Column(name="cv", type="boolean", nullable=true)
+     * @ORM\Column(name="cv", type="boolean")
      */
     private $cv;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="lm", type="boolean", nullable=true)
+     * @ORM\Column(name="lettremotivation", type="boolean")
      */
-    private $lm;
+    private $lettremotivation;
 
     /**
      * @var int
@@ -136,9 +129,9 @@ class Rdv
     /**
      * @var string
      *
-     * @ORM\Column(name="conslusion", type="string", length=255)
+     * @ORM\Column(name="conclusion", type="string", length=255)
      */
-    private $conslusion;
+    private $conclusion;
 
     /**
      * @var string
@@ -147,14 +140,60 @@ class Rdv
      */
     private $avis;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="permis_voiture", type="boolean")
+     */
+    private $permisVoiture;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="permis_moto", type="boolean")
+     */
+    private $permisMoto;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="voiture", type="boolean")
+     */
+    private $voiture;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="moto", type="boolean")
+     */
+    private $moto;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="scooter", type="boolean")
+     */
+    private $scooter;
+    
+    /**
+     * @var int
+     * 
+     * @ORM\Column(name="duree", type="integer")
+     */
+    private $duree;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Personne", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unePersonne;
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -163,12 +202,11 @@ class Rdv
      *
      * @param \DateTime $date
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -177,33 +215,8 @@ class Rdv
      *
      * @return \DateTime
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
-    }
-
-    /**
-     * Set heureDeb
-     *
-     * @param \DateTime $heureDeb
-     *
-     * @return Rdv
-     */
-    public function setHeureDeb($heureDeb)
-    {
-        $this->heureDeb = $heureDeb;
-    
-        return $this;
-    }
-
-    /**
-     * Get heureDeb
-     *
-     * @return \DateTime
-     */
-    public function getHeureDeb()
-    {
-        return $this->heureDeb;
     }
 
     /**
@@ -211,12 +224,11 @@ class Rdv
      *
      * @param boolean $cv
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setCv($cv)
-    {
+    public function setCv($cv) {
         $this->cv = $cv;
-    
+
         return $this;
     }
 
@@ -225,33 +237,30 @@ class Rdv
      *
      * @return boolean
      */
-    public function getCv()
-    {
+    public function getCv() {
         return $this->cv;
     }
 
     /**
-     * Set lm
+     * Set lettremotivation
      *
-     * @param boolean $lm
+     * @param boolean $lettremotivation
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setLm($lm)
-    {
-        $this->lm = $lm;
-    
+    public function setLettremotivation($lettremotivation) {
+        $this->lettremotivation = $lettremotivation;
+
         return $this;
     }
 
     /**
-     * Get lm
+     * Get lettremotivation
      *
      * @return boolean
      */
-    public function getLm()
-    {
-        return $this->lm;
+    public function getLettremotivation() {
+        return $this->lettremotivation;
     }
 
     /**
@@ -259,12 +268,11 @@ class Rdv
      *
      * @param integer $matGene
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setMatGene($matGene)
-    {
+    public function setMatGene($matGene) {
         $this->matGene = $matGene;
-    
+
         return $this;
     }
 
@@ -273,8 +281,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getMatGene()
-    {
+    public function getMatGene() {
         return $this->matGene;
     }
 
@@ -283,12 +290,11 @@ class Rdv
      *
      * @param integer $matTechn
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setMatTechn($matTechn)
-    {
+    public function setMatTechn($matTechn) {
         $this->matTechn = $matTechn;
-    
+
         return $this;
     }
 
@@ -297,8 +303,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getMatTechn()
-    {
+    public function getMatTechn() {
         return $this->matTechn;
     }
 
@@ -307,12 +312,11 @@ class Rdv
      *
      * @param integer $assiduite
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setAssiduite($assiduite)
-    {
+    public function setAssiduite($assiduite) {
         $this->assiduite = $assiduite;
-    
+
         return $this;
     }
 
@@ -321,8 +325,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getAssiduite()
-    {
+    public function getAssiduite() {
         return $this->assiduite;
     }
 
@@ -331,12 +334,11 @@ class Rdv
      *
      * @param integer $ouvEsprit
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setOuvEsprit($ouvEsprit)
-    {
+    public function setOuvEsprit($ouvEsprit) {
         $this->ouvEsprit = $ouvEsprit;
-    
+
         return $this;
     }
 
@@ -345,8 +347,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getOuvEsprit()
-    {
+    public function getOuvEsprit() {
         return $this->ouvEsprit;
     }
 
@@ -355,12 +356,11 @@ class Rdv
      *
      * @param integer $relConfiance
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setRelConfiance($relConfiance)
-    {
+    public function setRelConfiance($relConfiance) {
         $this->relConfiance = $relConfiance;
-    
+
         return $this;
     }
 
@@ -369,8 +369,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getRelConfiance()
-    {
+    public function getRelConfiance() {
         return $this->relConfiance;
     }
 
@@ -379,12 +378,11 @@ class Rdv
      *
      * @param integer $conForm
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setConForm($conForm)
-    {
+    public function setConForm($conForm) {
         $this->conForm = $conForm;
-    
+
         return $this;
     }
 
@@ -393,8 +391,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getConForm()
-    {
+    public function getConForm() {
         return $this->conForm;
     }
 
@@ -403,12 +400,11 @@ class Rdv
      *
      * @param integer $conApprent
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setConApprent($conApprent)
-    {
+    public function setConApprent($conApprent) {
         $this->conApprent = $conApprent;
-    
+
         return $this;
     }
 
@@ -417,8 +413,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getConApprent()
-    {
+    public function getConApprent() {
         return $this->conApprent;
     }
 
@@ -427,12 +422,11 @@ class Rdv
      *
      * @param integer $degresMotiv
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setDegresMotiv($degresMotiv)
-    {
+    public function setDegresMotiv($degresMotiv) {
         $this->degresMotiv = $degresMotiv;
-    
+
         return $this;
     }
 
@@ -441,8 +435,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getDegresMotiv()
-    {
+    public function getDegresMotiv() {
         return $this->degresMotiv;
     }
 
@@ -451,12 +444,11 @@ class Rdv
      *
      * @param integer $rechEntrep
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setRechEntrep($rechEntrep)
-    {
+    public function setRechEntrep($rechEntrep) {
         $this->rechEntrep = $rechEntrep;
-    
+
         return $this;
     }
 
@@ -465,8 +457,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getRechEntrep()
-    {
+    public function getRechEntrep() {
         return $this->rechEntrep;
     }
 
@@ -475,12 +466,11 @@ class Rdv
      *
      * @param integer $predispoTechn
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setPredispoTechn($predispoTechn)
-    {
+    public function setPredispoTechn($predispoTechn) {
         $this->predispoTechn = $predispoTechn;
-    
+
         return $this;
     }
 
@@ -489,8 +479,7 @@ class Rdv
      *
      * @return integer
      */
-    public function getPredispoTechn()
-    {
+    public function getPredispoTechn() {
         return $this->predispoTechn;
     }
 
@@ -499,12 +488,11 @@ class Rdv
      *
      * @param string $observScolaire
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setObservScolaire($observScolaire)
-    {
+    public function setObservScolaire($observScolaire) {
         $this->observScolaire = $observScolaire;
-    
+
         return $this;
     }
 
@@ -513,8 +501,7 @@ class Rdv
      *
      * @return string
      */
-    public function getObservScolaire()
-    {
+    public function getObservScolaire() {
         return $this->observScolaire;
     }
 
@@ -523,12 +510,11 @@ class Rdv
      *
      * @param string $observEntretien
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setObservEntretien($observEntretien)
-    {
+    public function setObservEntretien($observEntretien) {
         $this->observEntretien = $observEntretien;
-    
+
         return $this;
     }
 
@@ -537,33 +523,30 @@ class Rdv
      *
      * @return string
      */
-    public function getObservEntretien()
-    {
+    public function getObservEntretien() {
         return $this->observEntretien;
     }
 
     /**
-     * Set conslusion
+     * Set conclusion
      *
-     * @param string $conslusion
+     * @param string $conclusion
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setConslusion($conslusion)
-    {
-        $this->conslusion = $conslusion;
-    
+    public function setConclusion($conclusion) {
+        $this->conclusion = $conclusion;
+
         return $this;
     }
 
     /**
-     * Get conslusion
+     * Get conclusion
      *
      * @return string
      */
-    public function getConslusion()
-    {
-        return $this->conslusion;
+    public function getConclusion() {
+        return $this->conclusion;
     }
 
     /**
@@ -571,12 +554,11 @@ class Rdv
      *
      * @param string $avis
      *
-     * @return Rdv
+     * @return Rendezvous
      */
-    public function setAvis($avis)
-    {
+    public function setAvis($avis) {
         $this->avis = $avis;
-    
+
         return $this;
     }
 
@@ -585,9 +567,142 @@ class Rdv
      *
      * @return string
      */
-    public function getAvis()
-    {
+    public function getAvis() {
         return $this->avis;
     }
-}
 
+    /**
+     * Set permisVoiture
+     *
+     * @param boolean $permisVoiture
+     *
+     * @return Rendezvous
+     */
+    public function setPermisVoiture($permisVoiture) {
+        $this->permisVoiture = $permisVoiture;
+
+        return $this;
+    }
+
+    /**
+     * Get permisVoiture
+     *
+     * @return boolean
+     */
+    public function getPermisVoiture() {
+        return $this->permisVoiture;
+    }
+
+    /**
+     * Set permisMoto
+     *
+     * @param boolean $permisMoto
+     *
+     * @return Rendezvous
+     */
+    public function setPermisMoto($permisMoto) {
+        $this->permisMoto = $permisMoto;
+
+        return $this;
+    }
+
+    /**
+     * Get permisMoto
+     *
+     * @return boolean
+     */
+    public function getPermisMoto() {
+        return $this->permisMoto;
+    }
+
+    /**
+     * Set voiture
+     *
+     * @param boolean $voiture
+     *
+     * @return Rendezvous
+     */
+    public function setVoiture($voiture) {
+        $this->voiture = $voiture;
+
+        return $this;
+    }
+
+    /**
+     * Get voiture
+     *
+     * @return boolean
+     */
+    public function getVoiture() {
+        return $this->voiture;
+    }
+
+    /**
+     * Set moto
+     *
+     * @param boolean $moto
+     *
+     * @return Rendezvous
+     */
+    public function setMoto($moto) {
+        $this->moto = $moto;
+
+        return $this;
+    }
+
+    /**
+     * Get moto
+     *
+     * @return boolean
+     */
+    public function getMoto() {
+        return $this->moto;
+    }
+
+    /**
+     * Set scooter
+     *
+     * @param boolean $scooter
+     *
+     * @return Rendezvous
+     */
+    public function setScooter($scooter) {
+        $this->scooter = $scooter;
+
+        return $this;
+    }
+
+    /**
+     * Get scooter
+     *
+     * @return boolean
+     */
+    public function getScooter() {
+        return $this->scooter;
+    }
+
+
+    /**
+     * Set unePersonne
+     *
+     * @param \CoreBundle\Entity\Personne $unePersonne
+     *
+     * @return Rendezvous
+     */
+    public function setUnePersonne(\CoreBundle\Entity\Personne $unePersonne = null)
+    {
+        $this->unePersonne = $unePersonne;
+    
+        return $this;
+    }
+
+    /**
+     * Get unePersonne
+     *
+     * @return \CoreBundle\Entity\Personne
+     */
+    public function getUnePersonne()
+    {
+        return $this->unePersonne;
+    }
+}
