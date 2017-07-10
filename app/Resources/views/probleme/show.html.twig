@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Probleme</h1>
+    <h1>Détails du problème</h1>
 
-    <table>
+    <table class='striped'>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -23,18 +23,23 @@
             </tr>
         </tbody>
     </table>
-
     <ul>
         <li>
-            <a href="{{ path('probleme_index') }}">Back to the list</a>
+            <a href="{{ path('probleme_edit', { 'id': probleme.id }) }}" class="waves-effect waves-light btn orange"><i class="material-icons right">replay</i>Modifier</a>
         </li>
-        <li>
-            <a href="{{ path('probleme_edit', { 'id': probleme.id }) }}">Edit</a>
-        </li>
+        </br>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button class="btn waves-effect waves-light red darken-2" type="submit" name="Supprimer">Supprimer
+                    <i class="material-icons right">delete</i>
+                </button>
             {{ form_end(delete_form) }}
+        </li>
+        </br>
+        <li>
+            <a href="{{ path('probleme_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
         </li>
     </ul>
 {% endblock %}
+
+

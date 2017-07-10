@@ -23,3 +23,20 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+
+        - { path: ^/contrat, role: ROLE_ADMIN }
+        - { path: ^/email, role: ROLE_ADMIN }
+        - { path: ^/entreprise, role: ROLE_ADMIN }
+        - { path: ^/personne, role: ROLE_ADMIN }
+        - { path: ^/probleme, role: ROLE_ADMIN }
+        - { path: ^/promo, role: ROLE_ADMIN }
+        - { path: ^/personne, role: ROLE_ADMIN }
+        - { path: ^/problem, role: ROLE_ADMIN }
+        - { path: ^/promo, role: ROLE_ADMIN }
+        - { path: ^/rendezvous, role: ROLE_ADMIN }
+        - { path: ^/tuteur, role: ROLE_ADMIN }
+        - { path: /edit$, role: ROLE_ADMIN }
+        - { path: /new$, role: ROLE_ADMIN }
+        - { path: /delete$, role: ROLE_ADMIN }        
+        - { path: /show$, role: ROLE_ADMIN }
+
