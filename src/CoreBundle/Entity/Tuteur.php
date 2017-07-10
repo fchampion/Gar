@@ -5,12 +5,12 @@ namespace CoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Entreprise
+ * Tuteur
  *
- * @ORM\Table(name="entreprise")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\EntrepriseRepository")
+ * @ORM\Table(name="tuteur")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\TuteurRepository")
  */
-class Entreprise {
+class Tuteur {
 
     /**
      * @var int
@@ -31,26 +31,39 @@ class Entreprise {
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
-    private $ville;
+    private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $adresse;
+    private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cp", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
-    private $cp;
+    private $telephone;
 
     /**
-     * Many Users have One Address.
+     * @var string
+     *
+     * @ORM\Column(name="fonction", type="string", length=255)
+     */
+    private $fonction;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="present", type="boolean")
+     */
+    private $present;
+
+    /**
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="uneEntreprise")
      */
     private $desContrats;
@@ -69,7 +82,7 @@ class Entreprise {
      *
      * @param string $nom
      *
-     * @return Entreprise
+     * @return Tuteur
      */
     public function setNom($nom) {
         $this->nom = $nom;
@@ -87,65 +100,113 @@ class Entreprise {
     }
 
     /**
-     * Set ville
+     * Set prenom
      *
-     * @param string $ville
+     * @param string $prenom
      *
-     * @return Entreprise
+     * @return Tuteur
      */
-    public function setVille($ville) {
-        $this->ville = $ville;
+    public function setPrenom($prenom) {
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get ville
+     * Get prenom
      *
      * @return string
      */
-    public function getVille() {
-        return $this->ville;
+    public function getPrenom() {
+        return $this->prenom;
     }
 
     /**
-     * Get adresse
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Tuteur
+     */
+    public function setEmail($email) {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
      *
      * @return string
      */
-    function getAdresse() {
-        return $this->adresse;
+    public function getEmail() {
+        return $this->email;
     }
 
     /**
-     * Get cp
+     * Set telephone
+     *
+     * @param string $telephone
+     *
+     * @return Tuteur
+     */
+    public function setTelephone($telephone) {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
      *
      * @return string
      */
-    function getCp() {
-        return $this->cp;
+    public function getTelephone() {
+        return $this->telephone;
     }
 
     /**
-     * Set adresse
+     * Set fonction
      *
-     * @param string $adresse
+     * @param string $fonction
      *
-     * @return Entreprise
+     * @return Tuteur
      */
-    function setAdresse($adresse) {
-        $this->adresse = $adresse;
+    public function setFonction($fonction) {
+        $this->fonction = $fonction;
+
+        return $this;
     }
 
     /**
-     * Set cp
+     * Get fonction
      *
-     * @param string $cp
-     *
-     * @return Entreprise
+     * @return string
      */
-    function setCp($cp) {
-        $this->cp = $cp;
+    public function getFonction() {
+        return $this->fonction;
+    }
+
+    /**
+     * Set present
+     *
+     * @param boolean $present
+     *
+     * @return Tuteur
+     */
+    public function setPresent($present) {
+        $this->present = $present;
+
+        return $this;
+    }
+
+    /**
+     * Get present
+     *
+     * @return boolean
+     */
+    public function getPresent() {
+        return $this->present;
     }
 
     /**
@@ -161,7 +222,7 @@ class Entreprise {
      *
      * @param \CoreBundle\Entity\Contrat $desContrat
      *
-     * @return Entreprise
+     * @return Tuteur
      */
     public function addDesContrat(\CoreBundle\Entity\Contrat $desContrat)
     {

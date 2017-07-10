@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -75,6 +76,19 @@ class Personne {
      * @ORM\JoinColumn(nullable=true)
      */
     private $unRendezVous;
+
+    /**
+     * Many Users have One Address.
+     * @ORM\OneToMany(targetEntity="Contrat", mappedBy="uneEntreprise")
+     */
+    private $desContrats;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Promo", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $unePromo;
+
 
     public function getId() {
         return $this->id;
@@ -234,4 +248,63 @@ class Personne {
         return $this->statut;
     }
 
+    /**
+     * Set unRendezVous
+     *
+     * @param \CoreBundle\Entity\Rendezvous $unRendezVous
+     *
+     * @return Personne
+     */
+    public function setUnRendezVous(\CoreBundle\Entity\Rendezvous $unRendezVous = null) {
+        $this->unRendezVous = $unRendezVous;
+
+        return $this;
+    }
+
+    /**
+     * Get unRendezVous
+     *
+     * @return \CoreBundle\Entity\Rendezvous
+     */
+    public function getUnRendezVous() {
+        return $this->unRendezVous;
+    }
+
+    public function __construct() {
+        $this->features = new ArrayCollection();
+    }
+
+    /**
+     * Add desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     *
+     * @return Personne
+     */
+    public function addDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats[] = $desContrat;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desContrat
+     *
+     * @param \CoreBundle\Entity\Contrat $desContrat
+     */
+    public function removeDesContrat(\CoreBundle\Entity\Contrat $desContrat)
+    {
+        $this->desContrats->removeElement($desContrat);
+    }
+
+    /**
+     * Get desContrats
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesContrats()
+    {
+        return $this->desContrats;
+    }
 }

@@ -1,0 +1,24 @@
+contrat_index:
+    path:     /
+    defaults: { _controller: "CoreBundle:Contrat:index" }
+    methods:  GET
+
+contrat_show:
+    path:     /{id}/show
+    defaults: { _controller: "CoreBundle:Contrat:show" }
+    methods:  GET
+
+contrat_new:
+    path:     /new
+    defaults: { _controller: "CoreBundle:Contrat:new" }
+    methods:  [GET, POST]
+
+contrat_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CoreBundle:Contrat:edit" }
+    methods:  [GET, POST]
+
+contrat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CoreBundle:Contrat:delete" }
+    methods:  DELETE

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Création d'une entreprise</h1>
+    <h1>Création d'un contrat</h1>
 <ul>
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -12,8 +12,7 @@
 
     </br>
     <li>
-        <a href="{{ path('entreprise_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
+        <a href="{{ path('contrat_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
     </li>
 </ul>
 {% endblock %}
-

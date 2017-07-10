@@ -1,0 +1,24 @@
+tuteur_index:
+    path:     /
+    defaults: { _controller: "CoreBundle:Tuteur:index" }
+    methods:  GET
+
+tuteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "CoreBundle:Tuteur:show" }
+    methods:  GET
+
+tuteur_new:
+    path:     /new
+    defaults: { _controller: "CoreBundle:Tuteur:new" }
+    methods:  [GET, POST]
+
+tuteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CoreBundle:Tuteur:edit" }
+    methods:  [GET, POST]
+
+tuteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CoreBundle:Tuteur:delete" }
+    methods:  DELETE

@@ -18,41 +18,53 @@
         <div class="nav-wrapper container">
             <ul class="right hide-on-med-and-down">
                 {% block nav1 %}
-                    <li><a href="http://localhost/Gar/web/app_dev.php/personne">Apprenti</a></li>  
-                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/promo">Promo</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li>    
+                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/contrat">Contrat</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous/envoiMail">Mail</a></li> 
                     {% endblock %}
                 <li><i class="large material-icons red"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
             </ul>   
             <ul id="nav-mobile" class="side-nav">
                 <li><i><a class="large material-icons red" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
-                            {% block nav2 %}
-                    <li><a href="http://localhost/Gar/web/app_dev.php/apprenti">Apprenti</a></li>  
-                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li> 
+
+                    {% block nav2 %}
+                    <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/promo">Promo</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li>    
+                    <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/contrat">Contrat</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous/envoiMail">Mail</a></li> 
 
                     {% endblock %}
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons withe-text">menu</i></a>
         </div>
 
-    </nav>
-    <!-- Titre de la page et résumé -->
+        </nav>
 
-    <!-- Contenu du site -->
-    <div class="container">
-        <div class="section">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center green-text"><i class="material-icons">{% block icon_body %}{% endblock %}</i></h2>
-                    <h5 class="center">{% block title_body %}{% endblock %}</h5>
-                    <p class="light" align="center">
-                    {% block body %}{% endblock %}
-                </p>
+        <!-- Contenu du site -->
+        <div class="container">
+            <div class="section">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center green-text"><i class="material-icons">{% block icon_body %}{% endblock %}</i></h2>
+                        <h5 class="center">{% block title_body %}{% endblock %}</h5>
+                        <p class="light" align="center">
+                        {% block body %}{% endblock %}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- insertion second parallax-container valign-wrapper -->
         {% block body2 %}{% endblock %}
-        <footer class="page-footer  indigo">
+        <footer class="page-footer indigo">
             {% block footer %}{% endblock %}            
                 <div class="container">
                     Made by <a class="black-text text-lighten-3" href="http://materializecss.com">Materialize</a>
@@ -68,7 +80,6 @@
                 $('select').material_select();
             });
         </script>
-
     </body>
 
 </html>

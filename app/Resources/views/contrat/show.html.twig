@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Détails du contrat</h1>
+    <table class='striped'>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contrat.id }}</td>
+            </tr>
+             <tr>
+                <th>Personne</th>                
+                <td>{{ contrat.unePersonne.nom }}</td>
+            </tr>
+             <tr>
+                <th>Entreprise</th>
+                <td>{{ contrat.uneEntreprise.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date de debut</th>
+                <td>{% if contrat.dateDebut %}{{ contrat.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de fin</th>
+                <td>{% if contrat.dateFin %}{{ contrat.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Actif</th>
+                <td>{% if contrat.actif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('contrat_edit', { 'id': contrat.id }) }}" class="waves-effect waves-light btn orange"><i class="material-icons right">replay</i>Modifier</a>
+        </li>
+        </br>
+        <li>
+            {{ form_start(delete_form) }}
+                <button class="btn waves-effect waves-light red darken-2" type="submit" name="Supprimer">Supprimer
+                    <i class="material-icons right">delete</i>
+                </button>
+            {{ form_end(delete_form) }}
+        </li>
+        </br>
+        <li>
+            <a href="{{ path('contrat_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
+        </li>
+    </ul>
+{% endblock %}
