@@ -27,3 +27,8 @@ rendezvous_envoiMail:
     path: /envoiMail
     defaults: { _controller: "CoreBundle:Rendezvous:envoiMail" }
     methods:  [GET]
+    
+rendezvous_mail:
+    path: /{id}/mail
+    defaults: { _controller: "CoreBundle:Rendezvous:mail" }
+    methods : GET

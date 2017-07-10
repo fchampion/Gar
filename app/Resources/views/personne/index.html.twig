@@ -25,7 +25,7 @@
                 <td>{{ personne.nom }}</td>
                 <td>{{ personne.prenom }}</td>
                 <td>{{ personne.mail }}</td>
-                <td>{{ personne.tel }}</td>
+                <td>0{{ personne.tel }}</td>
                 <td>{{ personne.statut }}</td>
                 <td><a href="{{ path('personne_edit', { 'id': personne.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
                 <td><a href="{{ path('personne_show', { 'id': personne.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>

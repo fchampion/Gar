@@ -27,7 +27,7 @@
                  <td>{{ rendezvous.unePersonne.nom }}</td>
                 <td><a href="{{ path('rendezvous_edit', { 'id': rendezvous.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
                 <td><a href="{{ path('rendezvous_show', { 'id': rendezvous.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
-                <td><a href="" class="waves-effect waves-light btn indigo">Mail</a></td>
+                <td><a href="{{ path('rendezvous_mail', { 'id': rendezvous.id}) }}" class="waves-effect waves-light btn indigo">Mail</a></td>
             </tr>
         {% endfor %}
         </tbody>
