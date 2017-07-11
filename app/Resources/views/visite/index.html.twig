@@ -9,25 +9,22 @@
     </ul>
     <table class='striped'>
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr>                
                 <th>Date</th>
+                <th>Heure</th>
                 <th>Duree</th>
-                <th>Obstuteur</th>
-                <th>Ptsaameliorer</th>
-                <th>Obsapprenti</th>
+                <th>Contrat</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for visite in visites %}
             <tr>
-                <td><a href="{{ path('visite_show', { 'id': visite.id }) }}">{{ visite.id }}</a></td>
-                <td>{% if visite.date %}{{ visite.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if visite.date %}{{ visite.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if visite.date %}{{ visite.date|date('H:i') }}{% endif %}</td>
                 <td>{{ visite.duree }}</td>
-                <td>{{ visite.obsTuteur }}</td>
-                <td>{{ visite.ptsAameliorer }}</td>
-                <td>{{ visite.obsApprenti }}</td>
+                <td>{{ visite.unContrat.unePersonne.nom }}</td>
                 <td><a href="{{ path('visite_edit', { 'id': visite.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
                 <td><a href="{{ path('visite_show', { 'id': visite.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
             </tr>

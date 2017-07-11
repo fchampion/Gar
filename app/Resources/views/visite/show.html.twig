@@ -3,7 +3,6 @@
 {% block body %}
 <h1>Détails de la visite</h1>
     <table class='striped'>
-    <table>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -18,16 +17,24 @@
                 <td>{{ visite.duree }}</td>
             </tr>
             <tr>
-                <th>Obstuteur</th>
+                <th>Observation tuteur</th>
                 <td>{{ visite.obsTuteur }}</td>
             </tr>
             <tr>
-                <th>Ptsaameliorer</th>
+                <th>Point à ameliorer</th>
                 <td>{{ visite.ptsAameliorer }}</td>
             </tr>
             <tr>
-                <th>Obsapprenti</th>
+                <th>Observation apprenti</th>
                 <td>{{ visite.obsApprenti }}</td>
+            </tr>
+            <tr>
+                <th>Visite numéro</th>
+                <td>{{ visite.numVisite}}</td>
+            </tr>
+            <tr>
+                <th>Contrat</th>
+                <td>{{ visite.unContrat.unePersonne.nom }}</td>
             </tr>
         </tbody>
     </table>

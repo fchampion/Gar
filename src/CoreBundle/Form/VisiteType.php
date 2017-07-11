@@ -19,6 +19,14 @@ class VisiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date')->add('duree')->add('obsTuteur')->add('ptsAameliorer')->add('obsApprenti')
+        ->add('numVisite', ChoiceType::class, array(
+                    'choices' => array(
+                        '1er' => false,
+                        '2nd' => true,
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
         ->add('unContrat', EntityType::class, array('class' => 'CoreBundle:Contrat', 'choice_label' => 'unePersonne.nom'));
     }
     

@@ -62,6 +62,13 @@ class Visite
      */
     private $unContrat;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="actif", type="boolean")
+     */
+    private $numVisite;
+
 
     /**
      * Get id
@@ -215,5 +222,29 @@ class Visite
     public function getUnContrat()
     {
         return $this->unContrat;
+    }
+
+    /**
+     * Set numVisite
+     *
+     * @param boolean $numVisite
+     *
+     * @return Visite
+     */
+    public function setNumVisite($numVisite)
+    {
+        $this->numVisite = $numVisite;
+    
+        return $this;
+    }
+
+    /**
+     * Get numVisite
+     *
+     * @return boolean
+     */
+    public function getNumVisite()
+    {
+        return $this->numVisite;
     }
 }

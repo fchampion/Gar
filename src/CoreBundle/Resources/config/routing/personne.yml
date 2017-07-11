@@ -22,3 +22,8 @@ personne_delete:
     path:     /{id}/delete
     defaults: { _controller: "CoreBundle:Personne:delete" }
     methods:  DELETE
+
+personne_conseil:
+    path:     /conseilclasse
+    defaults: { _controller: "CoreBundle:Personne:conseilclasse" }
+    methods:  GET

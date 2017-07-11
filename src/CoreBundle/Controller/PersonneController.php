@@ -122,6 +122,11 @@ class PersonneController extends Controller
             ->getForm()
         ;
     }
-    
+
+
+    public function conseilclasseAction()
+    {
+        return $this->render('personne/conseilclasse.html.twig');
+    }
 
 }
