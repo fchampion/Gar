@@ -1,43 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Problemes list</h1>
+    <h1>Liste des problèmes</h1>
+    <ul>
+        <li>
+            <a href="{{ path('probleme_new') }}" class="waves-effect waves-light btn green"><i class="material-icons left">add</i>Créer un nouveau problème</a>
+        </li>
+    </ul>
 
-    <table>
+    <table class='striped'>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Date</th>
                 <th>Motif</th>
                 <th>Echange</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for probleme in problemes %}
             <tr>
-                <td><a href="{{ path('probleme_show', { 'id': probleme.id }) }}">{{ probleme.id }}</a></td>
                 <td>{% if probleme.date %}{{ probleme.date|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ probleme.motif }}</td>
                 <td>{{ probleme.echange }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('probleme_show', { 'id': probleme.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('probleme_edit', { 'id': probleme.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <td><a href="{{ path('probleme_edit', { 'id': probleme.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
+                <td><a href="{{ path('probleme_show', { 'id': probleme.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('probleme_new') }}">Create a new probleme</a>
-        </li>
-    </ul>
 {% endblock %}

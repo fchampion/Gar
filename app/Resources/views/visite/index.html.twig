@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des visites</h1>
+    <ul>
+        <li>
+            <a href="{{ path('visite_new') }}" class="waves-effect waves-light btn green"><i class="material-icons left">add</i>Créer une nouvelle visite</a>
+        </li>
+    </ul>
+    <table class='striped'>
+        <thead>
+            <tr>                
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Duree</th>
+                <th>Contrat</th>
+                <th>Actions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for visite in visites %}
+            <tr>
+                <td>{% if visite.date %}{{ visite.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if visite.date %}{{ visite.date|date('H:i') }}{% endif %}</td>
+                <td>{{ visite.duree }}</td>
+                <td>{{ visite.unContrat.unePersonne.nom }}</td>
+                <td><a href="{{ path('visite_edit', { 'id': visite.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
+                <td><a href="{{ path('visite_show', { 'id': visite.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

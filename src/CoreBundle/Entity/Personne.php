@@ -447,6 +447,7 @@ class Personne {
 
     public function getUploadRootDir() {
         // On retourne le chemin relatif vers l'image pour notre code PHP
+       $this->uploadRootDir = __DIR__ . '/../../../web/' . $this->getUploadDir();
         return $this->uploadRootDir;
     }
 

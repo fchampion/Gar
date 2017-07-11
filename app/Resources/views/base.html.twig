@@ -20,26 +20,40 @@
                 {% block nav1 %}
                     <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
                     <li><a href="http://localhost/Gar/web/app_dev.php/promo">Promo</a></li>
-                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li>    
                     <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li>
-                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li>
                     <li><a href="http://localhost/Gar/web/app_dev.php/contrat">Contrat</a></li> 
-                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous/envoiMail">Mail</a></li>                   <li><a href="http://localhost/Gar/web/app_dev.php/personne/conseil">CDC</a></li> 
+
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/probleme">Probleme</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/visite">Visite</a></li>
+
+                    <li><a href="http://localhost/Gar/web/app_dev.php/email">Mail</a></li> 
+
                     {% endblock %}
-                <li><i class="large material-icons red"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><i class="large material-icons green"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                {% else %}
+                    <li><i class="large material-icons red"><a href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                {% endif %}
             </ul>   
             <ul id="nav-mobile" class="side-nav">
-                <li><i><a class="large material-icons red" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
-
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><i><a class="large material-icons green" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                {% else %}
+                    <li><i><a class="large material-icons red" href="http://localhost/Gar/web/app_dev.php/login">power_settings_new</a></i></li>
+                {% endif %}
                     {% block nav2 %}
                     <li><a href="http://localhost/Gar/web/app_dev.php/personne">Personne</a></li>
                     <li><a href="http://localhost/Gar/web/app_dev.php/promo">Promo</a></li>
-                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li>    
                     <li><a href="http://localhost/Gar/web/app_dev.php/entreprise">Entreprise</a></li>
-                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li> 
-                    <li><a href="http://localhost/Gar/web/app_dev.php/contrat">Contrat</a></li> 
-                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous/envoiMail">Mail</a></li> 
-
+                    <li><a href="http://localhost/Gar/web/app_dev.php/tuteur">Tuteur</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/contrat">Contrat</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/rendezvous">Rendez-vous</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/probleme">Probleme</a></li> 
+                    <li><a href="http://localhost/Gar/web/app_dev.php/visite">Visite</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/">Conseil de classe</a></li>
+                    <li><a href="http://localhost/Gar/web/app_dev.php/email">Mail</a></li> 
                     {% endblock %}
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons withe-text">menu</i></a>

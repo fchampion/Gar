@@ -32,3 +32,10 @@ rendezvous_pdf:
     path: /rdvpdf
     defaults: { _controller: "CoreBundle:Rendezvous:rdvpdf" }
     methods:  [GET]
+
+    
+rendezvous_mail:
+    path: /{id}/mail
+    defaults: { _controller: "CoreBundle:Rendezvous:mail" }
+    methods : GET
+

@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modification du problème</h1>
+    <h1>Modification d'une visite</h1>
 <ul>
+
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <button class="btn waves-effect waves-light red orange" type="submit" name="Modifier">Modifier
@@ -20,7 +21,7 @@
     </li>
     </br>
     <li>
-        <a href="{{ path('probleme_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
+        <a href="{{ path('visite_index') }}" class="waves-effect waves-light btn indigo darken-4">Revenir à la liste</a></td>
     </li>
 </ul>
 {% endblock %}
