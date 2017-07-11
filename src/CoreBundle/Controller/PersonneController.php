@@ -11,20 +11,19 @@ use CoreBundle\Form\PersonneType;
  * Personne controller.
  *
  */
-class PersonneController extends Controller
-{
+class PersonneController extends Controller {
+
     /**
      * Lists all personne entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $personnes = $em->getRepository('CoreBundle:Personne')->findAll();
 
         return $this->render('personne/index.html.twig', array(
-            'personnes' => $personnes,
+                    'personnes' => $personnes,
         ));
     }
 
@@ -32,14 +31,13 @@ class PersonneController extends Controller
      * Creates a new personne entity.
      *
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $personne = new Personne();
         $form = $this->createForm('CoreBundle\Form\PersonneType', $personne);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();                   
+            $em = $this->getDoctrine()->getManager();
             $em->persist($personne);
             $em->flush();
 
@@ -47,8 +45,8 @@ class PersonneController extends Controller
         }
 
         return $this->render('personne/new.html.twig', array(
-            'personne' => $personne,
-            'form' => $form->createView(),
+                    'personne' => $personne,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -56,13 +54,12 @@ class PersonneController extends Controller
      * Finds and displays a personne entity.
      *
      */
-    public function showAction(Personne $personne)
-    {
+    public function showAction(Personne $personne) {
         $deleteForm = $this->createDeleteForm($personne);
 
         return $this->render('personne/show.html.twig', array(
-            'personne' => $personne,
-            'delete_form' => $deleteForm->createView(),
+                    'personne' => $personne,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -70,8 +67,7 @@ class PersonneController extends Controller
      * Displays a form to edit an existing personne entity.
      *
      */
-    public function editAction(Request $request, Personne $personne)
-    {
+    public function editAction(Request $request, Personne $personne) {
         $deleteForm = $this->createDeleteForm($personne);
         $editForm = $this->createForm('CoreBundle\Form\PersonneType', $personne);
         $editForm->handleRequest($request);
@@ -83,9 +79,9 @@ class PersonneController extends Controller
         }
 
         return $this->render('personne/edit.html.twig', array(
-            'personne' => $personne,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'personne' => $personne,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -93,8 +89,7 @@ class PersonneController extends Controller
      * Deletes a personne entity.
      *
      */
-    public function deleteAction(Request $request, Personne $personne)
-    {
+    public function deleteAction(Request $request, Personne $personne) {
         $form = $this->createDeleteForm($personne);
         $form->handleRequest($request);
 
@@ -114,14 +109,12 @@ class PersonneController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Personne $personne)
-    {
+    private function createDeleteForm(Personne $personne) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('personne_delete', array('id' => $personne->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('personne_delete', array('id' => $personne->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
-    
 
 }

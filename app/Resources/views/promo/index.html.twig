@@ -20,6 +20,7 @@
                 <td>{{ promo.promo }}</td>
                 <td><a href="{{ path('promo_edit', { 'id': promo.id }) }}" class="waves-effect waves-light btn orange">Modifier</a></td>
                 <td><a href="{{ path('promo_show', { 'id': promo.id }) }}" class="waves-effect waves-light btn green">Détails</a></td>
+                <td><a href="{{ path('promo_conseil', { 'id': promo.id }) }}" class="waves-effect waves-light btn blue">Conseil De Classe</a></td>
             </tr>
         {% endfor %}
         </tbody>

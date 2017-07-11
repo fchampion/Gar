@@ -29,10 +29,9 @@ class Promo
     private $promo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Personne", cascade="persist")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="Personne", mappedBy="unePromo")
      */
-    private $unePersonne;
+    private $desPersonnes;
 
 
     /**
@@ -91,5 +90,46 @@ class Promo
     public function getUnePersonne()
     {
         return $this->unePersonne;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->desPersonnes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add desPersonne
+     *
+     * @param \CoreBundle\Entity\Personne $desPersonne
+     *
+     * @return Promo
+     */
+    public function addDesPersonne(\CoreBundle\Entity\Personne $desPersonne)
+    {
+        $this->desPersonnes[] = $desPersonne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove desPersonne
+     *
+     * @param \CoreBundle\Entity\Personne $desPersonne
+     */
+    public function removeDesPersonne(\CoreBundle\Entity\Personne $desPersonne)
+    {
+        $this->desPersonnes->removeElement($desPersonne);
+    }
+
+    /**
+     * Get desPersonnes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDesPersonnes()
+    {
+        return $this->desPersonnes;
     }
 }

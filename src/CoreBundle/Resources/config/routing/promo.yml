@@ -22,3 +22,8 @@ promo_delete:
     path:     /{id}/delete
     defaults: { _controller: "CoreBundle:Promo:delete" }
     methods:  DELETE
+
+promo_conseil:
+    path:     /{id}/conseil
+    defaults: { _controller: "CoreBundle:Promo:conseil" }
+    methods:  GET

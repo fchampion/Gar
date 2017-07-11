@@ -22,3 +22,4 @@ probleme_delete:
     path:     /{id}/delete
     defaults: { _controller: "CoreBundle:Probleme:delete" }
     methods:  DELETE
+

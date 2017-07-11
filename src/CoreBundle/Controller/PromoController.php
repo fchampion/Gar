@@ -10,20 +10,34 @@ use Symfony\Component\HttpFoundation\Request;
  * Promo controller.
  *
  */
-class PromoController extends Controller
-{
+class PromoController extends Controller {
+
     /**
      * Lists all promo entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $promos = $em->getRepository('CoreBundle:Promo')->findAll();
 
         return $this->render('promo/index.html.twig', array(
-            'promos' => $promos,
+                    'promos' => $promos,
+        ));
+    }
+
+    public function conseilAction(Promo $promo) {
+
+        $idpromo = $promo->getId();
+        
+        $personnesClasse = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('CoreBundle:Personne')
+                ->findAllByPromo($idpromo);
+
+        return $this->render('personne/conseildeclasse.html.twig', array(
+                    'personnesClasse' => $personnesClasse,
         ));
     }
 
@@ -31,8 +45,7 @@ class PromoController extends Controller
      * Creates a new promo entity.
      *
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $promo = new Promo();
         $form = $this->createForm('CoreBundle\Form\PromoType', $promo);
         $form->handleRequest($request);
@@ -46,8 +59,8 @@ class PromoController extends Controller
         }
 
         return $this->render('promo/new.html.twig', array(
-            'promo' => $promo,
-            'form' => $form->createView(),
+                    'promo' => $promo,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -55,13 +68,12 @@ class PromoController extends Controller
      * Finds and displays a promo entity.
      *
      */
-    public function showAction(Promo $promo)
-    {
+    public function showAction(Promo $promo) {
         $deleteForm = $this->createDeleteForm($promo);
 
         return $this->render('promo/show.html.twig', array(
-            'promo' => $promo,
-            'delete_form' => $deleteForm->createView(),
+                    'promo' => $promo,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -69,8 +81,7 @@ class PromoController extends Controller
      * Displays a form to edit an existing promo entity.
      *
      */
-    public function editAction(Request $request, Promo $promo)
-    {
+    public function editAction(Request $request, Promo $promo) {
         $deleteForm = $this->createDeleteForm($promo);
         $editForm = $this->createForm('CoreBundle\Form\PromoType', $promo);
         $editForm->handleRequest($request);
@@ -82,9 +93,9 @@ class PromoController extends Controller
         }
 
         return $this->render('promo/edit.html.twig', array(
-            'promo' => $promo,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'promo' => $promo,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -92,8 +103,7 @@ class PromoController extends Controller
      * Deletes a promo entity.
      *
      */
-    public function deleteAction(Request $request, Promo $promo)
-    {
+    public function deleteAction(Request $request, Promo $promo) {
         $form = $this->createDeleteForm($promo);
         $form->handleRequest($request);
 
@@ -113,12 +123,12 @@ class PromoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Promo $promo)
-    {
+    private function createDeleteForm(Promo $promo) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('promo_delete', array('id' => $promo->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('promo_delete', array('id' => $promo->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

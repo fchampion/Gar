@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 class PersonneType extends AbstractType {
 
@@ -29,6 +31,7 @@ class PersonneType extends AbstractType {
                         'Annulé' => 'Annulé')
                 
         ))
+                ->add('unePromo', EntityType::class, array('class' => 'CoreBundle:Promo', 'choice_label' => 'promo'))
                 ->add('file', FileType::class );
     }
 

@@ -29,10 +29,9 @@ class Promo
     private $promo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Personne", cascade="persist")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToMany(targetEntity="Personne", mappedBy="unePromo")
      */
-    private $unePersonne;
+    private $desPersonnes;
 
 
     /**
@@ -68,5 +67,28 @@ class Promo
     {
         return $this->promo;
     }
-}
 
+    /**
+     * Set unePersonne
+     *
+     * @param \CoreBundle\Entity\Personne $unePersonne
+     *
+     * @return Promo
+     */
+    public function setUnePersonne(\CoreBundle\Entity\Personne $unePersonne = null)
+    {
+        $this->unePersonne = $unePersonne;
+    
+        return $this;
+    }
+
+    /**
+     * Get unePersonne
+     *
+     * @return \CoreBundle\Entity\Personne
+     */
+    public function getUnePersonne()
+    {
+        return $this->unePersonne;
+    }
+}

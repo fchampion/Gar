@@ -145,5 +145,19 @@ class RendezvousController extends Controller {
 
         return $this->redirectToRoute('rendezvous_index');
     }
+    
+
+    public function rdvpdfAction() {
+        $html = $this->renderView('pdf/rdvpdf.html.twig');
+
+        $filename = sprintf('test-%s.pdf', date('Y-m-d'));
+
+        return new Response(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml($html), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+                ]
+        );
+    }
 
 }
