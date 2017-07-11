@@ -109,8 +109,8 @@ class Personne {
     private $desContrats;
 
     /**
-     * @ORM\OneToOne(targetEntity="CoreBundle\Entity\Promo", cascade="persist")
-     * @ORM\JoinColumn(nullable=true)
+     *  @ORM\ManyToOne(targetEntity="Promo", inversedBy="desPersonnes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $unePromo;
 

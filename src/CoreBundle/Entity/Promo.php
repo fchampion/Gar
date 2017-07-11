@@ -28,12 +28,16 @@ class Promo
      */
     private $promo;
 
+
+
     /**
-     * @ORM\OneToMany(targetEntity="Personne", mappedBy="unePromo")
+     * 
+     * @ORM\OneToMany(targetEntity="CoreBundle\Entity\Personne", cascade="persist", mappedBy="unePromo")
+     * @ORM\JoinColumn(nullable=true)
+     * 
+     * 
      */
     private $desPersonnes;
-
-
     /**
      * Get id
      *
